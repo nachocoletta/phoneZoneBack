@@ -18,8 +18,6 @@
 // // router.use('/user', usersRouter);
 // router.use(dbChargeRoute)
 
-
-
 // module.exports = router;
 
 const { Router } = require('express');
@@ -38,9 +36,19 @@ const reviewsRoute= require("./routeReviews.js")
 const wishlistRoute = require('./routeWishlist')
 const router = Router();
 const routerAuth = require("./auth")
+const statisticsRoute = require("./routeStatistics")
+
+const getCart = require('./cartsRoutes/get')
+const addCart = require('./cartsRoutes/post')
+const deleteCart = require('./cartsRoutes/delete')
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+
+/* *************************  routes CARRITO   **************************************** */
+router.use("/cart/addProduct", addCart);
+router.use("/cart/getProduct", getCart);
+router.use("/cart/deleteProduct", deleteCart);
 
 router.use('/product', productsRoute);
 router.use('/brand', brandRoute);
@@ -53,7 +61,8 @@ router.use('/reviews', reviewsRoute);
 router.use('/wishlist', wishlistRoute);
 
 router.use("/", routerAuth)
-router.use('/', loginRoute)
+router.use('/login', loginRoute)
 router.use('/orders', orderRouter)
-
+router.use('/statistics', statisticsRoute);
+//
 module.exports = router;
