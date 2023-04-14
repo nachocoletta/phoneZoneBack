@@ -31,7 +31,7 @@ router.get(
 
 if(datos){
 
-    const data = {
+    var data = {
       id: datos.dataValues.id,
       name: req.user.given_name,
       last_name: req.user.family_name,
