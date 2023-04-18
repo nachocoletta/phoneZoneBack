@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const passport = require("passport");
 const { User } = require("../db");
-const CLIENT = "https://glowing-sopapillas-e43d2f.netlify.app";
+const CLIENT = "https://front-zonemoib.vercel.app/";
 require("../utils/passport");
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
@@ -33,7 +33,7 @@ router.get(
         rol: datos.dataValues.rol,
         image: req.user.photos && req.user.photos.length > 0 ? req.user.photos[0].value : null,
       };
-  
+      res.setHeader('Set-Cookie', `cookie_name=cookie_value; Domain=front-zonemoib.vercel.app; Path=/; HttpOnly`);
       res.cookie('user_data', JSON.stringify(data));
       res.redirect(CLIENT);
     } else {
@@ -53,6 +53,7 @@ router.get(
       };
       res.json('user_data', JSON.stringify(data));
       res.cookie('cookie_name', 'cookie_value', { domain: 'https://front-zonemoib.vercel.app/' });
+      res.setHeader('Set-Cookie', `cookie_name=cookie_value; Domain=front-zonemoib.vercel.app; Path=/; HttpOnly`);
       res.redirect(CLIENT);
     }
   })
