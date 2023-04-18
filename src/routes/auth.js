@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const passport = require("passport");
 const { User } = require("../db");
-const CLIENT = process.env.CLIENT;
+const CLIENT = "https://front-zonemoib.vercel.app/";
 require("../utils/passport");
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
@@ -33,7 +33,7 @@ router.get(
         rol: datos.dataValues.rol,
         image: req.user.photos && req.user.photos.length > 0 ? req.user.photos[0].value : null,
       };
-  
+      res.setHeader('Set-Cookie', `cookie_name=cookie_value; Domain=front-zonemoib.vercel.app; Path=/; HttpOnly`);
       res.cookie('user_data', JSON.stringify(data));
       res.redirect(CLIENT);
     } else {
@@ -51,12 +51,15 @@ router.get(
         rol: userCreate.dataValues.rol,
         image: req.user.photos && req.user.photos.length > 0 ? req.user.photos[0].value : null,
       };
-      res.cookie('user_data', JSON.stringify(data));
+      res.json('user_data', JSON.stringify(data));
+      res.cookie('user_data', JSON.stringify(data), { domain: 'https://glowing-sopapillas-e43d2f.netlify.app' });
+      res.setHeader('Set-Cookie', `cookie_name=cookie_value; Domain=front-zonemoib.vercel.app; Path=/; HttpOnly`);
       res.redirect(CLIENT);
     }
   })
 
 router.get("/login/success", (req, res) => {
+  console.log("dsadsadsadadasdad",req.user)
   if (req.user) {
     res.status(200).json({
       success: true,
