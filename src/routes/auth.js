@@ -52,7 +52,7 @@ router.get(
         image: req.user.photos && req.user.photos.length > 0 ? req.user.photos[0].value : null,
       };
       res.json('user_data', JSON.stringify(data));
-      res.cookie('cookie_name', 'cookie_value', { domain: 'https://front-zonemoib.vercel.app/' });
+      res.cookie('user_data', JSON.stringify(data), { domain: 'https://glowing-sopapillas-e43d2f.netlify.app' });
       res.setHeader('Set-Cookie', `cookie_name=cookie_value; Domain=front-zonemoib.vercel.app; Path=/; HttpOnly`);
       res.redirect(CLIENT);
     }
