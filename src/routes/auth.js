@@ -51,7 +51,7 @@ router.get(
         rol: userCreate.dataValues.rol,
         image: req.user.photos && req.user.photos.length > 0 ? req.user.photos[0].value : null,
       };
-      res.cookie('user_data', JSON.stringify(data));
+      res.json('user_data', JSON.stringify(data));
       res.cookie('cookie_name', 'cookie_value', { domain: 'https://front-zonemoib.vercel.app/' });
       res.redirect(CLIENT);
     }
