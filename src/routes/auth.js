@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const passport = require("passport");
 const { User } = require("../db");
-const CLIENT = "https://glowing-sopapillas-e43d2f.netlify.app/Store";
+const CLIENT = "https://glowing-sopapillas-e43d2f.netlify.app";
 require("../utils/passport");
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
