@@ -6,9 +6,7 @@ const passport = require("passport");
 const CLIENT = "https://www.ariastv.online/"
 
 require("../utils/passport");
-function isLoggedIn(req, res, next) {
-  req.user ? next() : res.sendStatus(401);
-}
+
 
 const router = Router();
 
