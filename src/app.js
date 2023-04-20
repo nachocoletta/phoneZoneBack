@@ -12,7 +12,7 @@ require('../src/routes/auth.js');
 
 const server = express();
 app.use(cors({
-  origin: ['https://www.ariastv.online/', 'https://phonezoneback-production.up.railway.app/auth/login/success']
+  origin: ['*']
 }));
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin','*');
