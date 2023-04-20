@@ -1,10 +1,7 @@
 const { Router } = require("express");
 const { User } = require("../db");
 const passport = require("passport");
-// const CLIENT = "https://front-phone-zone.vercel.app";
-// const CLIENT = "https://front-phone-zone-git-main-nachocoletta.vercel.app/"
-const CLIENT = "https://main--jade-pothos-9cef9e.netlify.app/"
-
+const CLIENT = process.env.CLIENT;
 require("../utils/passport");
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
@@ -135,7 +132,7 @@ router.get("/google", passport.authenticate("google", ["profile", "email"] ));
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: CLIENT,
+    successRedirect: 'http://localhost:5173',
     failureRedirect: "/login/failed",
   })
   );
