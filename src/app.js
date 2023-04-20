@@ -13,9 +13,9 @@ require('../src/routes/auth.js');
 const server = express();
 
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin','*', 'https://phonezoneback-production.up.railway.app/auth/login/success');
+  res.header('Access-Control-Allow-Origin','*');
 
-  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Credentials', false);
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
