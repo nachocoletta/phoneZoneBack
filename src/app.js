@@ -20,11 +20,11 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: false,
-}));
+// server.use(session({
+//   secret: 'secret',
+//   resave: false,
+//   saveUninitialized: false,
+// }));
 
 server.use(passport.initialize());
 server.use(passport.session());
