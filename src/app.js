@@ -11,11 +11,13 @@ require('./db.js');
 require('../src/routes/auth.js');
 
 const server = express();
-
+app.use(cors({
+  origin: ['https://www.ariastv.online/', 'https://phonezoneback-production.up.railway.app/auth/login/success']
+}));
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin','*');
 
-  res.header('Access-Control-Allow-Credentials', false);
+  res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
