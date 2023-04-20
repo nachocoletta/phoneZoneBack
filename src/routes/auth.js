@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { User } = require("../db");
 const passport = require("passport");
-const CLIENT = process.env.CLIENT;
+const CLIENT = "https://front-phone-zone.vercel.app";
 require("../utils/passport");
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
