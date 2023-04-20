@@ -12,15 +12,14 @@ require('../src/routes/auth.js');
 
 const server = express();
 
-// Configuración de CORS
-const corsOptions = {
-  origin: '*',
-  methods: 'GET, POST, PUT, DELETE, OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization',
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-server.use(cors(corsOptions));
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'https://phonezoneback-production.up.railway.app/auth/login/success');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 server.use(session({
   secret: 'secret',
