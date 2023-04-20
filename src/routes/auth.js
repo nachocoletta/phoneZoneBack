@@ -3,7 +3,7 @@ const { User } = require("../db");
 const passport = require("passport");
 // const CLIENT = "https://front-phone-zone.vercel.app";
 // const CLIENT = "https://front-phone-zone-git-main-nachocoletta.vercel.app/"
-const CLIENT = "https://www.ariastv.online/"
+const CLIENT = "https://prueba-sad-git-main-jooseariias.vercel.app/"
 
 require("../utils/passport");
 function isLoggedIn(req, res, next) {
