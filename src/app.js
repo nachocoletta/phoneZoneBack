@@ -11,9 +11,13 @@ require('./db.js');
 require('../src/routes/auth.js');
 
 const server = express();
-app.use(cors({
-  origin: ['*']
-}));
+server.use(
+  cors({
+    origin: "*",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin','*');
 
