@@ -4,7 +4,7 @@ const passport = require('passport');
 passport.use(new GoogleStrategy({
   clientID: "1042216557034-foecoc9icuqhahh5bndoabjgukv7aa16.apps.googleusercontent.com",
   clientSecret: "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",
-  callbackURL: "https://www.ariastv.online/auth/google/callback",
+  callbackURL: "https://phonezoneback-production.up.railway.app/auth/google/callback",
   scope: ["profile", "email"],
   //passReqToCallback: true,
 },
