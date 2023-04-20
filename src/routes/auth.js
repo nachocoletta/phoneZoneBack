@@ -1,11 +1,12 @@
 const { Router } = require("express");
 const { User } = require("../db");
 const passport = require("passport");
-const CLIENT = process.env.CLIENT;
+const CLIENT = 'https://front-phone-zone.vercel.app/';
 require("../utils/passport");
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
+
 
 const router = Router();
 
@@ -132,7 +133,7 @@ router.get("/google", passport.authenticate("google", ["profile", "email"] ));
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: 'http://localhost:5173',
+    successRedirect: 'https://front-phone-zone.vercel.app/',
     failureRedirect: "/login/failed",
   })
   );
@@ -140,7 +141,7 @@ router.get(
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect(process.env.CLIENT);
+	res.redirect(CLIENT);
 });
 
 module.exports = router;
