@@ -13,14 +13,19 @@ require('../src/routes/auth.js');
 const server = express();
 
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Origin', 'https://phonezoneback-production.up.railway.app/auth/login/success');
+  const allowedOrigins = [
+    '*',
+    'https://phonezoneback-production.up.railway.app/auth/login/success'
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
-
 server.use(session({
   secret: 'secret',
   resave: false,
